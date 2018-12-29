@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>行丰商城-用户中心</title>
+	<link rel="shortcut icon" href="/static/images/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+    <script src="js/axios-0.18.0.min.js"></script>
+    <script src="js/vue-2.5.16.js"></script>
+    <script src="js/hosts.js"></script>
+</head>
+<body>
+<div id="app">
+	<div class="header_con">
+		<div class="header">
+			<div class="welcome fl">欢迎来到行丰商城!</div>
+			<div class="fr">
+				<div class="login_info fl">
+					欢迎您：<em>{{ user_id }}</em>
+				</div>
+				<div class="login_btn fl">
+					<a href="login.html">登录</a>
+					<span>|</span>
+					<a href="register.html">注册</a>
+				</div>
+				<div class="user_link fl">
+					<span>|</span>
+					<a href="user_center_info.html">用户中心</a>
+					<span>|</span>
+					<a href="cart.html">我的购物车</a>
+					<span>|</span>
+					<a href="user_center_order.html">我的订单</a>
+				</div>
+			</div>
+		</div>		
+	</div>
+
+	<div class="search_bar clearfix">
+		<a href="index.html" class="logo fl"><img src="images/logo.png"></a>
+		<div class="sub_page_name fl">|&nbsp;&nbsp;&nbsp;&nbsp;用户中心</div>
+		<div class="search_con fr mt40">
+			<input type="text" class="input_text fl" name="" placeholder="搜索商品">
+			<input type="button" class="input_btn fr" name="" value="搜索">
+		</div>		
+	</div>
+
+	<div class="main_con clearfix">
+		<div class="left_menu_con clearfix">
+			<h3>用户中心</h3>
+			<ul>
+				<li><a href="user_center_info.html">· 个人信息</a></li>
+				<li><a href="user_center_order.html" class="active">· 全部订单</a></li>
+				<li><a href="user_center_site.html">· 收货地址</a></li>
+				<li><a href="user_center_pass.html">· 修改密码</a></li>
+			</ul>
+		</div>
+		<div class="right_content clearfix">
+				<h3 class="common_title2">全部订单</h3>
+                <div v-for="order_num in order_list">
+                    <ul class="order_list_th w978 clearfix">
+                        <li class="col01">{{ order_id[order_num].create_time }}</li>
+                        <li class="col02">订单号：{{ order_num }}</li>
+                    </ul>
+
+                    <table class="order_list_table w980">
+                        <tbody>
+                            <tr>
+                                <td width="55%">
+                                    <ul class="order_goods_list clearfix" v-for="order_goods in order_id[order_num].goods">
+
+                                        <li class="col01"><img v-bind:src="order_goods.image_url"></li>
+                                        <li class="col02">{{ order_goods.name }}<em></em></li>
+                                        <li class="col03">{{ order_goods.count }}</li>
+                                        <li class="col04">{{ order_goods.price }}元</li>
+                                    </ul>
+                                </td>
+                                <td width="15%">{{ order_id[order_num].total_amount }}</td>
+                                <td width="15%">{{ order_id[order_num].pay_method }}</td>
+                                <td width="15%"><a href="#" class="oper_btn">{{ order_id[order_num].status }}</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+				
+
+
+				<!--<div class="pagenation">
+					<a href="#"><上一页</a>
+					<a href="#" class="active">1</a>
+					<a href="#">2</a>
+					<a href="#">3</a>
+					<a href="#">4</a>
+					<a href="#">5</a>
+					<a href="#">下一页></a>
+				</div>-->
+		</div>
+	</div>
+
+
+
+	<div class="footer">
+		<div class="foot_link">
+			<a href="#">关于我们</a>
+			<span>|</span>
+			<a href="#">联系我们</a>
+			<span>|</span>
+			<a href="#">招聘人才</a>
+			<span>|</span>
+			<a href="#">友情链接</a>		
+		</div>
+		<p>CopyRight © 2018 北京行丰银拓有限公司 All Rights Reserved</p>
+		<p>电话：400-876-8760 &nbsp;&nbsp;&nbsp;&nbsp;   京ICP备案证书号：京ICP备11001851号</p>
+		<p>© 2005-2018 行丰银拓办公用品商城 版权所有，并保留所有权利。 北京市海淀区西草场1号802 Tel: 400-876-8760 E-mail: hfyt365@163.com</p>
+
+	</div>
+
+
+</div>
+
+    <script src="js/user_center_order.js"></script>
+
+</body>
+</html>
