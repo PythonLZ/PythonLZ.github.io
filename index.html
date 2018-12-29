@@ -1,0 +1,2272 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>行丰银拓-首页</title>
+    <link rel="shortcut icon" href="/static/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <script type="text/javascript" src="/js/hosts.js"></script>
+    <script type="text/javascript" src="/js/vue-2.5.16.js"></script>
+    <script type="text/javascript" src="/js/axios-0.18.0.min.js"></script>
+    <script type="text/javascript" src="/js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="/js/slide.js"></script>
+</head>
+<body>
+    <div id="app" v-cloak>
+    <div class="header_con">
+        <div class="header">
+            <div class="welcome fl">欢迎来到行丰银拓!</div>
+<!--            <div class="weicome fl" @click="addFavorite(window.location,document.title)">添加收藏</div> -->
+            <div class="fr">
+                <div v-if="username" class="login_btn fl">
+                    欢迎您：<em>[[ username ]]</em>
+                    <span>|</span>
+                    <a @click="logout">退出</a>
+                </div>
+                <div v-else class="login_btn fl">
+                    <a href="/login.html">登录</a>
+                    <span>|</span>
+                    <a href="/register.html">注册</a>
+                </div>
+                <div class="user_link fl">
+                    <span>|</span>
+                    <a href="/user_center_info.html">用户中心</a>
+                    <span>|</span>
+                    <a href="/cart.html">我的购物车</a>
+                    <span>|</span>
+                    <a href="/user_center_order.html">我的订单</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="search_bar clearfix">
+        <a href="index.html" class="logo fl"><img src="images/logo.png"></a>
+        <div class="search_wrap fl">
+            <form method="get" action="/search.html" class="search_con">
+                <input type="text" class="input_text fl" name="q" placeholder="搜索商品">
+                <input type="submit" class="input_btn fr" name="" value="搜索">
+            </form>
+            <ul class="search_suggest fl">
+                <li><a href="#">索尼微单</a></li>
+                <li><a href="#">优惠15元</a></li>
+                <li><a href="#">美妆个护</a></li>
+                <li><a href="#">买2免1</a></li>
+            </ul>
+        </div>
+
+        <div class="guest_cart fr">
+            <a href="/cart.html" class="cart_name fl">我的购物车</a>
+            <div class="goods_count fl" id="show_count">[[ cart_total_count]]</div>
+
+            <ul class="cart_goods_show">
+				<li v-for="sku in cart">
+					<img :src="sku.default_image_url" alt="商品图片">
+					<h4>[[sku.name]]</h4>
+					<div>[[sku.count]]</div>
+				</li>
+			</ul>
+        </div>
+    </div>
+
+    <div class="navbar_con">
+        <div class="navbar">
+            <h1 class="fl">商品分类</h1>
+            <ul class="navlist fl">
+                <li><a href="">首页</a></li>
+                <li class="interval">|</li>
+                <li><a href="">政府采购</a></li>
+                <li class="interval">|</li>
+                <li><a href="">礼品定制</a></li>
+                <li class="interval">|</li>
+                <li><a href="">政府服务</a></li>
+                <li class="interval">|</li>
+                <li><a href="">解决方案</a></li>
+                <li class="interval">|</li>
+                <li><a href="">积分商城</a></li>
+                <li class="interval">|</li>
+                <li><a href="">维修服务</a></li>
+                <li class="interval">|</li>
+                <li><a href="">场景采购</a></li>
+                <li class="interval">|</li>
+                <li><a href="">关于行丰</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="pos_center_con clearfix">
+        <ul class="slide">
+            
+            <li><a href="http://127.0.0.1:8080/"><img src="http://39.106.99.136:8888/group1/M00/00/02/rBEt31wQnniAaNrmAAEaTZ6F-4o5952388" alt="碎纸机"></a></li>
+            
+            <li><a href="http://127.0.0.1:8080/"><img src="http://39.106.99.136:8888/group1/M00/00/00/wKgBmluwetWAUZMqAAEb1ENDcaw0382654" alt="打印机"></a></li>
+            
+            <li><a href="http://127.0.0.1:8080/"><img src="http://39.106.99.136:8888/group1/M00/00/00/wKgBmluweueAI_HbAAEJqNINT4g9910588" alt="办公耗材"></a></li>
+            
+            <li><a href="http://127.0.0.1:8080/"><img src="http://39.106.99.136:8888/group1/M00/00/00/wKgBmlu-7-OAasVCAAlVE2UlzNA5698638" alt="扫描芯主义"></a></li>
+            
+        </ul>
+        <div class="prev"></div>
+        <div class="next"></div>
+        <ul class="points">
+            <!-- <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li> -->
+        </ul>
+        <ul class="sub_menu">
+            
+            <li>
+                <div class="level1">
+                    
+                    <a href="http://127.0.0.1:8080/">办公文具</a>
+                    
+                </div>
+                <div class="level2">
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">桌上用品 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=74">剪刀</a>
+                            
+                            <a href="/list.html?cat=75">订书机</a>
+                            
+                            <a href="/list.html?cat=76">订书钉/图钉</a>
+                            
+                            <a href="/list.html?cat=77">打孔器</a>
+                            
+                            <a href="/list.html?cat=78">笔筒</a>
+                            
+                            <a href="/list.html?cat=79">计算器</a>
+                            
+                            <a href="/list.html?cat=80">写字板</a>
+                            
+                            <a href="/list.html?cat=81">仪器尺</a>
+                            
+                            <a href="/list.html?cat=82">装订夹</a>
+                            
+                            <a href="/list.html?cat=83">起钉器</a>
+                            
+                            <a href="/list.html?cat=84">回形针筒</a>
+                            
+                            <a href="/list.html?cat=85">书立</a>
+                            
+                            <a href="/list.html?cat=86">回形针</a>
+                            
+                            <a href="/list.html?cat=87">削笔机/刀</a>
+                            
+                            <a href="/list.html?cat=88">胶带座</a>
+                            
+                            <a href="/list.html?cat=89">美工刀</a>
+                            
+                            <a href="/list.html?cat=90">海绵缸</a>
+                            
+                            <a href="/list.html?cat=91">长尾夹</a>
+                            
+                            <a href="/list.html?cat=92">橡皮泥</a>
+                            
+                            <a href="/list.html?cat=93">台历架</a>
+                            
+                            <a href="/list.html?cat=94">台历</a>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">书写用品 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=95">中性笔</a>
+                            
+                            <a href="/list.html?cat=96">圆珠笔</a>
+                            
+                            <a href="/list.html?cat=97">荧光笔</a>
+                            
+                            <a href="/list.html?cat=98">白板笔</a>
+                            
+                            <a href="/list.html?cat=99">台笔</a>
+                            
+                            <a href="/list.html?cat=100">钢笔</a>
+                            
+                            <a href="/list.html?cat=101">铅笔</a>
+                            
+                            <a href="/list.html?cat=102">笔芯</a>
+                            
+                            <a href="/list.html?cat=103">书写墨水</a>
+                            
+                            <a href="/list.html?cat=104">签字笔</a>
+                            
+                            <a href="/list.html?cat=105">水性笔</a>
+                            
+                            <a href="/list.html?cat=106">修正带</a>
+                            
+                            <a href="/list.html?cat=107">记号笔</a>
+                            
+                            <a href="/list.html?cat=108">粉笔</a>
+                            
+                            <a href="/list.html?cat=109">毛笔</a>
+                            
+                            <a href="/list.html?cat=110">水彩笔</a>
+                            
+                            <a href="/list.html?cat=111">绘图笔</a>
+                            
+                            <a href="/list.html?cat=112">橡皮擦</a>
+                            
+                            <a href="/list.html?cat=113">油漆笔</a>
+                            
+                            <a href="/list.html?cat=114">修正液铅芯</a>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">文件管理 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=115">档案盒</a>
+                            
+                            <a href="/list.html?cat=116">文件夹</a>
+                            
+                            <a href="/list.html?cat=117">抽杆夹</a>
+                            
+                            <a href="/list.html?cat=118">文件袋</a>
+                            
+                            <a href="/list.html?cat=119">资料册</a>
+                            
+                            <a href="/list.html?cat=120">事务包</a>
+                            
+                            <a href="/list.html?cat=121">名片册</a>
+                            
+                            <a href="/list.html?cat=122">名片盒</a>
+                            
+                            <a href="/list.html?cat=123">分类纸</a>
+                            
+                            <a href="/list.html?cat=124">快劳夹</a>
+                            
+                            <a href="/list.html?cat=125">光盘包</a>
+                            
+                            <a href="/list.html?cat=126">文件栏</a>
+                            
+                            <a href="/list.html?cat=127">相册</a>
+                            
+                            <a href="/list.html?cat=128">文件盘</a>
+                            
+                            <a href="/list.html?cat=129">挂快劳</a>
+                            
+                            <a href="/list.html?cat=130">文件柜</a>
+                            
+                            <a href="/list.html?cat=131">票据夹</a>
+                            
+                            <a href="/list.html?cat=132">风琴包</a>
+                            
+                            <a href="/list.html?cat=133">票据袋</a>
+                            
+                            <a href="/list.html?cat=134">文件筐</a>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">胶粘制品 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=135">胶水</a>
+                            
+                            <a href="/list.html?cat=136">固体胶棒</a>
+                            
+                            <a href="/list.html?cat=137">便条纸</a>
+                            
+                            <a href="/list.html?cat=138">标签纸</a>
+                            
+                            <a href="/list.html?cat=139">双面胶带</a>
+                            
+                            <a href="/list.html?cat=140">文具胶带</a>
+                            
+                            <a href="/list.html?cat=141">封箱胶带</a>
+                            
+                            <a href="/list.html?cat=142">特种胶带</a>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">本册纸质 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=143">螺旋本</a>
+                            
+                            <a href="/list.html?cat=144">胶装本</a>
+                            
+                            <a href="/list.html?cat=145">皮面本</a>
+                            
+                            <a href="/list.html?cat=146">效率手册</a>
+                            
+                            <a href="/list.html?cat=147">签到簿</a>
+                            
+                            <a href="/list.html?cat=148">证书</a>
+                            
+                            <a href="/list.html?cat=149">信封/信纸</a>
+                            
+                            <a href="/list.html?cat=150">内页</a>
+                            
+                            <a href="/list.html?cat=151">便签本</a>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">财务用品 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=152">手提金库/印章箱</a>
+                            
+                            <a href="/list.html?cat=153">复写纸</a>
+                            
+                            <a href="/list.html?cat=154">橡皮筋</a>
+                            
+                            <a href="/list.html?cat=155">印台/印泥/印油</a>
+                            
+                            <a href="/list.html?cat=156">印章垫/印章盒</a>
+                            
+                            <a href="/list.html?cat=157">财务单据</a>
+                            
+                            <a href="/list.html?cat=158">办公用章</a>
+                            
+                            <a href="/list.html?cat=159">凭证封面</a>
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+            </li>
+            
+            <li>
+                <div class="level1">
+                    
+                    <a href="http://127.0.0.1:8080/">办公用纸</a>
+                    
+                </div>
+                <div class="level2">
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">彩色复印纸 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=160">彩色复印纸</a>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">传真纸 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=161">传真纸</a>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">打印纸 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=162">打印纸</a>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">复印纸 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=163">复印纸</a>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">收银纸 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=164">收银纸</a>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">特种纸 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=165">特种纸</a>
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+            </li>
+            
+            <li>
+                <div class="level1">
+                    
+                    <a href="http://127.0.0.1:8080/">办公耗材</a>
+                    
+                </div>
+                <div class="level2">
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">通用耗材 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=166">硒鼓</a>
+                            
+                            <a href="/list.html?cat=167">复印机粉盒/墨粉</a>
+                            
+                            <a href="/list.html?cat=168">墨盒/墨水</a>
+                            
+                            <a href="/list.html?cat=169">色带</a>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">原装耗材 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=170">硒鼓</a>
+                            
+                            <a href="/list.html?cat=171">复印机粉盒/墨粉</a>
+                            
+                            <a href="/list.html?cat=172">墨盒/墨水</a>
+                            
+                            <a href="/list.html?cat=173">色带</a>
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+            </li>
+            
+            <li>
+                <div class="level1">
+                    
+                    <a href="http://127.0.0.1:8080/">办公设备</a>
+                    
+                </div>
+                <div class="level2">
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">打印设备 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=174">A4激光打印机</a>
+                            
+                            <a href="/list.html?cat=175">A3激光打印机</a>
+                            
+                            <a href="/list.html?cat=176">多功能一体机</a>
+                            
+                            <a href="/list.html?cat=177">号码机</a>
+                            
+                            <a href="/list.html?cat=178">喷墨打印机</a>
+                            
+                            <a href="/list.html?cat=179">针式打印机</a>
+                            
+                            <a href="/list.html?cat=180">支票打印机</a>
+                            
+                            <a href="/list.html?cat=181">标签打印机</a>
+                            
+                            <a href="/list.html?cat=182">复印机</a>
+                            
+                            <a href="/list.html?cat=183">复印机配件</a>
+                            
+                            <a href="/list.html?cat=184">扫描仪</a>
+                            
+                            <a href="/list.html?cat=185">速印机</a>
+                            
+                            <a href="/list.html?cat=186">传真机</a>
+                            
+                            <a href="/list.html?cat=187">收银机</a>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">通讯设备 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=188">电话机</a>
+                            
+                            <a href="/list.html?cat=189">无绳电话</a>
+                            
+                            <a href="/list.html?cat=190">子母机</a>
+                            
+                            <a href="/list.html?cat=191">会议电话</a>
+                            
+                            <a href="/list.html?cat=192">手机</a>
+                            
+                            <a href="/list.html?cat=193">对讲机</a>
+                            
+                            <a href="/list.html?cat=194">录音电话</a>
+                            
+                            <a href="/list.html?cat=195">来电显示盒</a>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">行业设备 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=196">碎纸机</a>
+                            
+                            <a href="/list.html?cat=197">装订机</a>
+                            
+                            <a href="/list.html?cat=198">塑封机</a>
+                            
+                            <a href="/list.html?cat=199">裁纸刀</a>
+                            
+                            <a href="/list.html?cat=200">考勤机</a>
+                            
+                            <a href="/list.html?cat=201">钥匙箱</a>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">财务设备 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=202">点/验钞机</a>
+                            
+                            <a href="/list.html?cat=203">保险柜</a>
+                            
+                            <a href="/list.html?cat=204">监控设备</a>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">会议展示 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=205">报刊架</a>
+                            
+                            <a href="/list.html?cat=206">投影幕布</a>
+                            
+                            <a href="/list.html?cat=207">白板</a>
+                            
+                            <a href="/list.html?cat=208">投影仪</a>
+                            
+                            <a href="/list.html?cat=209">投影仪配件</a>
+                            
+                            <a href="/list.html?cat=210">意见箱</a>
+                            
+                            <a href="/list.html?cat=211">地图</a>
+                            
+                            <a href="/list.html?cat=212">激光笔</a>
+                            
+                            <a href="/list.html?cat=213">电子白板</a>
+                            
+                            <a href="/list.html?cat=214">指示牌</a>
+                            
+                            <a href="/list.html?cat=215">白板擦</a>
+                            
+                            <a href="/list.html?cat=216">胸绳卡</a>
+                            
+                            <a href="/list.html?cat=217">证件卡</a>
+                            
+                            <a href="/list.html?cat=218">磁扣</a>
+                            
+                            <a href="/list.html?cat=219">软磁条</a>
+                            
+                            <a href="/list.html?cat=220">台卡</a>
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+            </li>
+            
+            <li>
+                <div class="level1">
+                    
+                    <a href="http://127.0.0.1:8080/">数码产品</a>
+                    
+                </div>
+                <div class="level2">
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">摄影摄像 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=221">数码相机</a>
+                            
+                            <a href="/list.html?cat=222">单电/微单相机</a>
+                            
+                            <a href="/list.html?cat=223">照相机套机</a>
+                            
+                            <a href="/list.html?cat=224">照相机配件</a>
+                            
+                            <a href="/list.html?cat=225">单反相机</a>
+                            
+                            <a href="/list.html?cat=226">拍立得</a>
+                            
+                            <a href="/list.html?cat=227">运动相机</a>
+                            
+                            <a href="/list.html?cat=228">摄像机</a>
+                            
+                            <a href="/list.html?cat=229">摄像机套机</a>
+                            
+                            <a href="/list.html?cat=230">摄像机配件</a>
+                            
+                            <a href="/list.html?cat=231">镜头</a>
+                            
+                            <a href="/list.html?cat=232">户外器材</a>
+                            
+                            <a href="/list.html?cat=233">影棚器材</a>
+                            
+                            <a href="/list.html?cat=234">数码相框</a>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">数码配件 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=235">存储卡</a>
+                            
+                            <a href="/list.html?cat=236">三脚架/云台</a>
+                            
+                            <a href="/list.html?cat=237">相机包</a>
+                            
+                            <a href="/list.html?cat=238">滤镜</a>
+                            
+                            <a href="/list.html?cat=239">闪光灯/手柄</a>
+                            
+                            <a href="/list.html?cat=240">相机清洁/贴膜</a>
+                            
+                            <a href="/list.html?cat=241">机身附件</a>
+                            
+                            <a href="/list.html?cat=242">读卡器</a>
+                            
+                            <a href="/list.html?cat=243">支架</a>
+                            
+                            <a href="/list.html?cat=244">电池/充电器</a>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">智能设备 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=245">智能手环</a>
+                            
+                            <a href="/list.html?cat=246">智能手表</a>
+                            
+                            <a href="/list.html?cat=247">智能眼镜</a>
+                            
+                            <a href="/list.html?cat=248">智能机器人</a>
+                            
+                            <a href="/list.html?cat=249">运动跟踪器</a>
+                            
+                            <a href="/list.html?cat=250">健康监测</a>
+                            
+                            <a href="/list.html?cat=251">智能配饰</a>
+                            
+                            <a href="/list.html?cat=252">智能家居</a>
+                            
+                            <a href="/list.html?cat=253">体感车</a>
+                            
+                            <a href="/list.html?cat=254">无人机</a>
+                            
+                            <a href="/list.html?cat=255">其他配件</a>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">影音娱乐 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=256">耳机/耳麦</a>
+                            
+                            <a href="/list.html?cat=257">音箱/音响</a>
+                            
+                            <a href="/list.html?cat=258">智能音箱</a>
+                            
+                            <a href="/list.html?cat=259">便携/无线音箱</a>
+                            
+                            <a href="/list.html?cat=260">专业音箱</a>
+                            
+                            <a href="/list.html?cat=261">攻放</a>
+                            
+                            <a href="/list.html?cat=262">收音机</a>
+                            
+                            <a href="/list.html?cat=263">话筒</a>
+                            
+                            <a href="/list.html?cat=264">MP3/MP4</a>
+                            
+                            <a href="/list.html?cat=265">DVD播放器</a>
+                            
+                            <a href="/list.html?cat=266">数字音频处理器</a>
+                            
+                            <a href="/list.html?cat=267">HDMI分配器</a>
+                            
+                            <a href="/list.html?cat=268">HDMI切换器</a>
+                            
+                            <a href="/list.html?cat=269">音频线</a>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">电子教育 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=270">学生平板</a>
+                            
+                            <a href="/list.html?cat=271">点读机/笔</a>
+                            
+                            <a href="/list.html?cat=272">早教益智</a>
+                            
+                            <a href="/list.html?cat=273">录音笔</a>
+                            
+                            <a href="/list.html?cat=274">电子书</a>
+                            
+                            <a href="/list.html?cat=275">电子词典</a>
+                            
+                            <a href="/list.html?cat=276">复读机</a>
+                            
+                            <a href="/list.html?cat=277">翻译机</a>
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+            </li>
+            
+            <li>
+                <div class="level1">
+                    
+                    <a href="http://127.0.0.1:8080/">通讯设备</a>
+                    
+                </div>
+                <div class="level2">
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">手机通讯 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=278">手机</a>
+                            
+                            <a href="/list.html?cat=279">游戏手机</a>
+                            
+                            <a href="/list.html?cat=280">老人机</a>
+                            
+                            <a href="/list.html?cat=281">对讲机</a>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">电话机及配件 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=282">录音答录电话机</a>
+                            
+                            <a href="/list.html?cat=283">普通电话机</a>
+                            
+                            <a href="/list.html?cat=284">通讯配件</a>
+                            
+                            <a href="/list.html?cat=285">无绳电话机</a>
+                            
+                            <a href="/list.html?cat=286">可扩展电话</a>
+                            
+                            <a href="/list.html?cat=287">电话线</a>
+                            
+                            <a href="/list.html?cat=288">磁卡电话</a>
+                            
+                            <a href="/list.html?cat=289">投币电话</a>
+                            
+                            <a href="/list.html?cat=290">电话管理系统</a>
+                            
+                            <a href="/list.html?cat=291">电话交换机</a>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">会议电话 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=292">音频会议电话</a>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">其他通讯设备及配件 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=293">无线呼叫器</a>
+                            
+                            <a href="/list.html?cat=294">呼寻设备及配件</a>
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+            </li>
+            
+            <li>
+                <div class="level1">
+                    
+                    <a href="http://127.0.0.1:8080/">网络设备</a>
+                    
+                </div>
+                <div class="level2">
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">外设产品 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=295">鼠标</a>
+                            
+                            <a href="/list.html?cat=296">键盘</a>
+                            
+                            <a href="/list.html?cat=297">键鼠套装</a>
+                            
+                            <a href="/list.html?cat=298">网络仪表仪器</a>
+                            
+                            <a href="/list.html?cat=299">U盘</a>
+                            
+                            <a href="/list.html?cat=300">移动硬盘</a>
+                            
+                            <a href="/list.html?cat=301">鼠标垫</a>
+                            
+                            <a href="/list.html?cat=302">摄像头</a>
+                            
+                            <a href="/list.html?cat=303">线缆</a>
+                            
+                            <a href="/list.html?cat=304">手写板</a>
+                            
+                            <a href="/list.html?cat=305">硬盘盒</a>
+                            
+                            <a href="/list.html?cat=306">电脑工具</a>
+                            
+                            <a href="/list.html?cat=307">电脑清洁</a>
+                            
+                            <a href="/list.html?cat=308">UPS电源</a>
+                            
+                            <a href="/list.html?cat=309">插座</a>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">电脑整机 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=310">便携式计算机</a>
+                            
+                            <a href="/list.html?cat=311">台式计算机</a>
+                            
+                            <a href="/list.html?cat=312">液晶显示器</a>
+                            
+                            <a href="/list.html?cat=313">服务器</a>
+                            
+                            <a href="/list.html?cat=314">平板电脑</a>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">网络产品 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=315">网卡</a>
+                            
+                            <a href="/list.html?cat=316">路由器</a>
+                            
+                            <a href="/list.html?cat=317">交换机</a>
+                            
+                            <a href="/list.html?cat=318">打印机服务器</a>
+                            
+                            <a href="/list.html?cat=319">KVM</a>
+                            
+                            <a href="/list.html?cat=320">新风机</a>
+                            
+                            <a href="/list.html?cat=321">网线</a>
+                            
+                            <a href="/list.html?cat=322">水晶头</a>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">核心配件 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=323">CPU</a>
+                            
+                            <a href="/list.html?cat=324">硬盘</a>
+                            
+                            <a href="/list.html?cat=325">内存条</a>
+                            
+                            <a href="/list.html?cat=326">显卡</a>
+                            
+                            <a href="/list.html?cat=327">电源</a>
+                            
+                            <a href="/list.html?cat=328">主板</a>
+                            
+                            <a href="/list.html?cat=329">机箱</a>
+                            
+                            <a href="/list.html?cat=330">CPU风扇</a>
+                            
+                            <a href="/list.html?cat=331">刻录机</a>
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+            </li>
+            
+            <li>
+                <div class="level1">
+                    
+                    <a href="http://127.0.0.1:8080/">办公电器</a>
+                    
+                </div>
+                <div class="level2">
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">大家电 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=332">电冰箱</a>
+                            
+                            <a href="/list.html?cat=333">消毒柜</a>
+                            
+                            <a href="/list.html?cat=334">洗衣机</a>
+                            
+                            <a href="/list.html?cat=335">冷饮柜</a>
+                            
+                            <a href="/list.html?cat=336">空调机</a>
+                            
+                            <a href="/list.html?cat=337">电视机</a>
+                            
+                            <a href="/list.html?cat=338">热水器</a>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">生活电器 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=339">电风扇</a>
+                            
+                            <a href="/list.html?cat=340">电暖器</a>
+                            
+                            <a href="/list.html?cat=341">加湿器</a>
+                            
+                            <a href="/list.html?cat=342">饮水机</a>
+                            
+                            <a href="/list.html?cat=343">吸尘器</a>
+                            
+                            <a href="/list.html?cat=344">电水壶</a>
+                            
+                            <a href="/list.html?cat=345">电熨斗</a>
+                            
+                            <a href="/list.html?cat=346">净化器</a>
+                            
+                            <a href="/list.html?cat=347">净水器</a>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">厨房电器 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=348">电饭煲</a>
+                            
+                            <a href="/list.html?cat=349">电磁炉</a>
+                            
+                            <a href="/list.html?cat=350">豆浆机</a>
+                            
+                            <a href="/list.html?cat=351">咖啡机</a>
+                            
+                            <a href="/list.html?cat=352">微波炉</a>
+                            
+                            <a href="/list.html?cat=353">电烤箱</a>
+                            
+                            <a href="/list.html?cat=354">榨汁机</a>
+                            
+                            <a href="/list.html?cat=355">多用途锅</a>
+                            
+                            <a href="/list.html?cat=356">酸奶机</a>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">个护健康 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=357">剃须刀</a>
+                            
+                            <a href="/list.html?cat=358">美发器</a>
+                            
+                            <a href="/list.html?cat=359">按摩器</a>
+                            
+                            <a href="/list.html?cat=360">测量仪</a>
+                            
+                            <a href="/list.html?cat=361">电吹风</a>
+                            
+                            <a href="/list.html?cat=362">毛球修剪器</a>
+                            
+                            <a href="/list.html?cat=363">保暖防护</a>
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+            </li>
+            
+            <li>
+                <div class="level1">
+                    
+                    <a href="http://127.0.0.1:8080/">生活日用</a>
+                    
+                </div>
+                <div class="level2">
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">生活用纸 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=364">卷纸</a>
+                            
+                            <a href="/list.html?cat=365">抽纸</a>
+                            
+                            <a href="/list.html?cat=366">擦手纸</a>
+                            
+                            <a href="/list.html?cat=367">湿纸巾</a>
+                            
+                            <a href="/list.html?cat=368">坐便纸</a>
+                            
+                            <a href="/list.html?cat=369">大盘纸</a>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">清洁用品 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=370">洗衣液</a>
+                            
+                            <a href="/list.html?cat=371">消毒液</a>
+                            
+                            <a href="/list.html?cat=372">洁厕剂</a>
+                            
+                            <a href="/list.html?cat=373">洗洁精</a>
+                            
+                            <a href="/list.html?cat=374">洗衣粉/皂/液</a>
+                            
+                            <a href="/list.html?cat=375">清洁剂</a>
+                            
+                            <a href="/list.html?cat=376">空气清新剂</a>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">清洁工具 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=377">水桶/脸盆</a>
+                            
+                            <a href="/list.html?cat=378">百洁布/抹布/清洁球</a>
+                            
+                            <a href="/list.html?cat=379">尘推</a>
+                            
+                            <a href="/list.html?cat=380">拖把</a>
+                            
+                            <a href="/list.html?cat=381">垃圾桶/纸篓</a>
+                            
+                            <a href="/list.html?cat=382">鞋油鞋刷</a>
+                            
+                            <a href="/list.html?cat=383">扫帚/畚箕</a>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">床上用品 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=384">枕头</a>
+                            
+                            <a href="/list.html?cat=385">被子</a>
+                            
+                            <a href="/list.html?cat=386">毯子</a>
+                            
+                            <a href="/list.html?cat=387">床品套件</a>
+                            
+                            <a href="/list.html?cat=388">床品单件</a>
+                            
+                            <a href="/list.html?cat=389">床垫床褥</a>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">一次性用品 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=390">垃圾袋</a>
+                            
+                            <a href="/list.html?cat=391">纸杯</a>
+                            
+                            <a href="/list.html?cat=392">手套/鞋套/头套</a>
+                            
+                            <a href="/list.html?cat=393">保鲜膜</a>
+                            
+                            <a href="/list.html?cat=394">机械油</a>
+                            
+                            <a href="/list.html?cat=395">棉签/棉棒</a>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">日用装饰 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=396">衣架</a>
+                            
+                            <a href="/list.html?cat=397">收纳箱</a>
+                            
+                            <a href="/list.html?cat=398">行李箱</a>
+                            
+                            <a href="/list.html?cat=399">卫浴收纳</a>
+                            
+                            <a href="/list.html?cat=400">毛巾</a>
+                            
+                            <a href="/list.html?cat=401">箱包</a>
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+            </li>
+            
+            <li>
+                <div class="level1">
+                    
+                    <a href="http://127.0.0.1:8080/">劳保用品</a>
+                    
+                </div>
+                <div class="level2">
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">劳动防护 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=402">劳动防护</a>
+                            
+                            <a href="/list.html?cat=403">头部防护</a>
+                            
+                            <a href="/list.html?cat=404">眼部防护</a>
+                            
+                            <a href="/list.html?cat=405">听力防护</a>
+                            
+                            <a href="/list.html?cat=406">呼吸防护</a>
+                            
+                            <a href="/list.html?cat=407">身体防护</a>
+                            
+                            <a href="/list.html?cat=408">手部防护</a>
+                            
+                            <a href="/list.html?cat=409">足部防护</a>
+                            
+                            <a href="/list.html?cat=410">坠落防护</a>
+                            
+                            <a href="/list.html?cat=411">其他防护</a>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">五金工具 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=412">灯具</a>
+                            
+                            <a href="/list.html?cat=413">手动工具</a>
+                            
+                            <a href="/list.html?cat=414">电动工具</a>
+                            
+                            <a href="/list.html?cat=415">工具套装</a>
+                            
+                            <a href="/list.html?cat=416">五金配件</a>
+                            
+                            <a href="/list.html?cat=417">梯子</a>
+                            
+                            <a href="/list.html?cat=418">手电筒</a>
+                            
+                            <a href="/list.html?cat=419">汽车养护</a>
+                            
+                            <a href="/list.html?cat=420">手推车</a>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">消防用品 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=421">消防器材</a>
+                            
+                            <a href="/list.html?cat=422">应急照明</a>
+                            
+                            <a href="/list.html?cat=423">消防装备</a>
+                            
+                            <a href="/list.html?cat=424">警示设备</a>
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+            </li>
+            
+            <li>
+                <div class="level1">
+                    
+                    <a href="http://127.0.0.1:8080/">食品饮料</a>
+                    
+                </div>
+                <div class="level2">
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">饮料冲调 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=425">饮料</a>
+                            
+                            <a href="/list.html?cat=426">牛奶酸奶</a>
+                            
+                            <a href="/list.html?cat=427">饮用水</a>
+                            
+                            <a href="/list.html?cat=428">咖啡/奶茶</a>
+                            
+                            <a href="/list.html?cat=429">蜂蜜/蜂产品</a>
+                            
+                            <a href="/list.html?cat=430">冲饮谷物</a>
+                            
+                            <a href="/list.html?cat=431">成人奶粉</a>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">茶叶 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=432">铁观音</a>
+                            
+                            <a href="/list.html?cat=433">普洱</a>
+                            
+                            <a href="/list.html?cat=434">龙井</a>
+                            
+                            <a href="/list.html?cat=435">绿茶</a>
+                            
+                            <a href="/list.html?cat=436">红茶</a>
+                            
+                            <a href="/list.html?cat=437">乌龙茶</a>
+                            
+                            <a href="/list.html?cat=438">花草茶</a>
+                            
+                            <a href="/list.html?cat=439">花果茶</a>
+                            
+                            <a href="/list.html?cat=440">黑茶</a>
+                            
+                            <a href="/list.html?cat=441">白茶</a>
+                            
+                            <a href="/list.html?cat=442">养生茶</a>
+                            
+                            <a href="/list.html?cat=443">其它茶</a>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">进口食品 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=444">牛奶</a>
+                            
+                            <a href="/list.html?cat=445">饼干</a>
+                            
+                            <a href="/list.html?cat=446">蛋糕</a>
+                            
+                            <a href="/list.html?cat=447">糖/巧克力</a>
+                            
+                            <a href="/list.html?cat=448">零食</a>
+                            
+                            <a href="/list.html?cat=449">水饮料</a>
+                            
+                            <a href="/list.html?cat=450">咖啡粉</a>
+                            
+                            <a href="/list.html?cat=451">冲调品</a>
+                            
+                            <a href="/list.html?cat=452">油</a>
+                            
+                            <a href="/list.html?cat=453">方便食品</a>
+                            
+                            <a href="/list.html?cat=454">米面调味</a>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">休闲食品 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=455">营养零食</a>
+                            
+                            <a href="/list.html?cat=456">休闲零食</a>
+                            
+                            <a href="/list.html?cat=457">膨化食品</a>
+                            
+                            <a href="/list.html?cat=458">坚果炒货</a>
+                            
+                            <a href="/list.html?cat=459">肉干/熟食</a>
+                            
+                            <a href="/list.html?cat=460">蜜饯果干</a>
+                            
+                            <a href="/list.html?cat=461">糖果/巧克力</a>
+                            
+                            <a href="/list.html?cat=462">饼干蛋糕</a>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">冷冻速食 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=463">水饺/馄饨</a>
+                            
+                            <a href="/list.html?cat=464">汤圆/元宵</a>
+                            
+                            <a href="/list.html?cat=465">面点烘焙</a>
+                            
+                            <a href="/list.html?cat=466">半成品</a>
+                            
+                            <a href="/list.html?cat=467">奶酪/黄油</a>
+                            
+                            <a href="/list.html?cat=468">方便速食</a>
+                            
+                            <a href="/list.html?cat=469">火锅丸串</a>
+                            
+                            <a href="/list.html?cat=470">冰淇淋</a>
+                            
+                            <a href="/list.html?cat=471">冷藏饮品</a>
+                            
+                            <a href="/list.html?cat=472">低温奶</a>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">酒类 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=473">白酒</a>
+                            
+                            <a href="/list.html?cat=474">葡萄酒</a>
+                            
+                            <a href="/list.html?cat=475">洋酒</a>
+                            
+                            <a href="/list.html?cat=476">啤酒</a>
+                            
+                            <a href="/list.html?cat=477">黄酒/养生酒</a>
+                            
+                            <a href="/list.html?cat=478">收藏酒/陈年老酒</a>
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+            </li>
+            
+            <li>
+                <div class="level1">
+                    
+                    <a href="http://127.0.0.1:8080/">个人护理</a>
+                    
+                </div>
+                <div class="level2">
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">男士护肤 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=479">控油</a>
+                            
+                            <a href="/list.html?cat=480">洁面</a>
+                            
+                            <a href="/list.html?cat=481">乳液/面霜</a>
+                            
+                            <a href="/list.html?cat=482">面膜</a>
+                            
+                            <a href="/list.html?cat=483">爽肤水</a>
+                            
+                            <a href="/list.html?cat=484">剃须</a>
+                            
+                            <a href="/list.html?cat=485">精华</a>
+                            
+                            <a href="/list.html?cat=486">防晒</a>
+                            
+                            <a href="/list.html?cat=487">套装/礼盒</a>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">洗发护发 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=488">洗发水</a>
+                            
+                            <a href="/list.html?cat=489">护发素</a>
+                            
+                            <a href="/list.html?cat=490">发膜/精油</a>
+                            
+                            <a href="/list.html?cat=491">造型</a>
+                            
+                            <a href="/list.html?cat=492">染发</a>
+                            
+                            <a href="/list.html?cat=493">烫发</a>
+                            
+                            <a href="/list.html?cat=494">假发</a>
+                            
+                            <a href="/list.html?cat=495">美发工具</a>
+                            
+                            <a href="/list.html?cat=496">洗护套装</a>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">口腔护理 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=497">牙膏</a>
+                            
+                            <a href="/list.html?cat=498">牙粉</a>
+                            
+                            <a href="/list.html?cat=499">牙贴</a>
+                            
+                            <a href="/list.html?cat=500">牙刷</a>
+                            
+                            <a href="/list.html?cat=501">牙线</a>
+                            
+                            <a href="/list.html?cat=502">漱口水</a>
+                            
+                            <a href="/list.html?cat=503">口喷</a>
+                            
+                            <a href="/list.html?cat=504">假牙清洁</a>
+                            
+                            <a href="/list.html?cat=505">套装</a>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">身体护理 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=506">沐浴露</a>
+                            
+                            <a href="/list.html?cat=507">香皂</a>
+                            
+                            <a href="/list.html?cat=508">洗手液</a>
+                            
+                            <a href="/list.html?cat=509">护手霜</a>
+                            
+                            <a href="/list.html?cat=510">浴盐</a>
+                            
+                            <a href="/list.html?cat=511">润肤精油</a>
+                            
+                            <a href="/list.html?cat=512">美颈</a>
+                            
+                            <a href="/list.html?cat=513">没胸</a>
+                            
+                            <a href="/list.html?cat=514">纤体塑形</a>
+                            
+                            <a href="/list.html?cat=515">手膜/足膜</a>
+                            
+                            <a href="/list.html?cat=516">男士洗液</a>
+                            
+                            <a href="/list.html?cat=517">花露水</a>
+                            
+                            <a href="/list.html?cat=518">走珠/止汗露</a>
+                            
+                            <a href="/list.html?cat=519">脱毛刀/膏套装</a>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">纸品清洗 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=520">抽纸</a>
+                            
+                            <a href="/list.html?cat=521">卷纸</a>
+                            
+                            <a href="/list.html?cat=522">湿巾</a>
+                            
+                            <a href="/list.html?cat=523">厨房用纸</a>
+                            
+                            <a href="/list.html?cat=524">湿厕纸</a>
+                            
+                            <a href="/list.html?cat=525">洗衣凝珠</a>
+                            
+                            <a href="/list.html?cat=526">洗衣液</a>
+                            
+                            <a href="/list.html?cat=527">洗衣粉/皂</a>
+                            
+                            <a href="/list.html?cat=528">护理除菌</a>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">家庭清洁 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=529">洗洁精</a>
+                            
+                            <a href="/list.html?cat=530">油污净</a>
+                            
+                            <a href="/list.html?cat=531">洁厕剂</a>
+                            
+                            <a href="/list.html?cat=532">消毒液</a>
+                            
+                            <a href="/list.html?cat=533">地板清洁剂</a>
+                            
+                            <a href="/list.html?cat=534">垃圾袋</a>
+                            
+                            <a href="/list.html?cat=536">垃圾桶</a>
+                            
+                            <a href="/list.html?cat=539">拖把/扫把</a>
+                            
+                            <a href="/list.html?cat=540">驱蚊驱虫</a>
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+            </li>
+            
+            <li>
+                <div class="level1">
+                    
+                    <a href="http://127.0.0.1:8080/">活动户外</a>
+                    
+                </div>
+                <div class="level2">
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">体育用品 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=541">篮球</a>
+                            
+                            <a href="/list.html?cat=542">足球</a>
+                            
+                            <a href="/list.html?cat=543">乒乓球</a>
+                            
+                            <a href="/list.html?cat=544">羽毛球</a>
+                            
+                            <a href="/list.html?cat=545">网球</a>
+                            
+                            <a href="/list.html?cat=546">排球</a>
+                            
+                            <a href="/list.html?cat=547">高尔夫</a>
+                            
+                            <a href="/list.html?cat=548">台球</a>
+                            
+                            <a href="/list.html?cat=549">健身/护具</a>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">户外用品 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=550">户外装备</a>
+                            
+                            <a href="/list.html?cat=551">户外鞋服</a>
+                            
+                            <a href="/list.html?cat=552">其他户外用品</a>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="list_group">
+                        <div class="group_name fl">运动系列 &gt;</div>
+                        <div class="group_detail fl">
+                            
+                            <a href="/list.html?cat=553">健身训练</a>
+                            
+                            <a href="/list.html?cat=554">骑行运动</a>
+                            
+                            <a href="/list.html?cat=555">运动鞋包运动服饰</a>
+                            
+                            <a href="/list.html?cat=556">其他运动系列</a>
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+            </li>
+            
+        </ul>
+
+        <div class="news">
+            <div class="news_title">
+                <h3>快讯</h3>
+                <a href="#">更多 &gt;</a>
+            </div>
+            <ul class="news_list">
+                
+                <li><a href="http://127.0.0.1:8080/">得力办公更得力</a></li>
+                
+                <li><a href="http://127.0.0.1:8080/">晨光专场 </a></li>
+                
+                <li><a href="http://127.0.0.1:8080/">打印机、扫描仪开启办公新模式</a></li>
+                
+                <li><a href="http://127.0.0.1:8080/">探索公益新模式</a></li>
+                
+                <li><a href="http://127.0.0.1:8080/">家电专场 套购9折</a></li>
+                
+                <li><a href="http://www.行丰银拓.com">超市美食家 满188减100</a></li>
+                
+                <li><a href="http://127.0.0.1:8080/">办公之日 电脑最高减1000元</a></li>
+                
+            </ul>
+            
+            <a href="http://127.0.0.1:8080/" class="advs"><img src="http://39.106.99.136:8888/group1/M00/00/01/CtM3BVrNs2SAf2DEAAAGl2-3v5k2172012"></a>
+            
+        </div>
+    </div>
+
+    <div class="list_model">
+        <div class="list_title clearfix">
+            <h3 class="fl" id="model01">1F 办公文具</h3>
+            <div class="subtitle fr">
+                <a @mouseenter="f1_tab=1" :class="f1_tab===1?'active':''">桌上用品</a>
+                <a @mouseenter="f1_tab=2" :class="f1_tab===2?'active':''">书写用品</a>
+                <a @mouseenter="f1_tab=3" :class="f1_tab===3?'active':''">文件管理</a>
+            </div>
+        </div>
+        <div class="goods_con clearfix">
+            <div class="goods_banner fl">
+                <img src="http://39.106.99.136:8888/group1/M00/00/01/wKgBmlvNhzyAcmQOAAC6damj6F86260356">
+                <div class="channel">
+                    
+                    <a href="http://127.0.0.1:8080/">手机</a>
+                    
+                    <a href="http://127.0.0.1:8080/">配件</a>
+                    
+                    <a href="http://127.0.0.1:8080/">充值</a>
+                    
+                    <a href="http://127.0.0.1:8080/">优惠券</a>
+                    
+                </div>
+                <div class="key_words">
+                    
+                    <a href="http://127.0.0.1:8080/">荣耀手机</a>
+                    
+                    <a href="http://127.0.0.1:8080/">国美手机</a>
+                    
+                    <a href="http://127.0.0.1:8080/">华为手机</a>
+                    
+                    <a href="http://127.0.0.1:8080/">热销推荐</a>
+                    
+                    <a href="http://127.0.0.1:8080/">以旧换新</a>
+                    
+                    <a href="http://127.0.0.1:8080/">潮3C</a>
+                    
+                    <a href="http://127.0.0.1:8080/">全面屏</a>
+                    
+                    <a href="http://127.0.0.1:8080/">守护宝</a>
+                    
+                    <a href="http://127.0.0.1:8080/">存储卡</a>
+                    
+                </div>
+
+            </div>
+            <ul v-show="f1_tab===1" class="goods_list fl">
+                
+                <li>
+                    <a href="http://127.0.0.1:8080/goods/7.html" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/00/wKgBmluwZMCAIOUvAABuRWPv6844723626"></a>
+                    <h4><a href="http://127.0.0.1:8080/goods/7.html" title="三木(SUNWOOD) 91178 195mm办公剪刀不锈钢剪刀 绿色">三木(SUNWOOD) 91178 195mm办公剪刀不锈钢剪刀 绿色</a></h4>
+                    <div class="prize">￥ 8.00</div>
+                </li>
+                
+                <li>
+                    <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/00/wKgBmluwZMqASrrrAAD5EIG0Y-c6605688"></a>
+                    <h4><a href="http://127.0.0.1:8080/" title="得力(deli) 0392 50页厚层订书机 23/6 23/10">得力(deli) 0392 50页厚层订书机 23/6 23/10</a></h4>
+                    <div class="prize">￥ 55.00</div>
+                </li>
+                
+                <li>
+                    <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/00/wKgBmlu7QCaAa3EFAAMeQiv6_2w7743714"></a>
+                    <h4><a href="http://127.0.0.1:8080/" title="广博(GuangBo)加厚三层文件盘/资料架/文件架/办公用品 颜色随机 单个装WJK9226">广博(GuangBo)加厚三层文件盘/资料架/文件架/办公用品 颜色随机 单个装WJK9226</a></h4>
+                    <div class="prize">￥ 13.00</div>
+                </li>
+                
+                <li>
+                    <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/00/wKgBmlu7QUqAN5sIAAYfyT5C6ac8285908"></a>
+                    <h4><a href="http://127.0.0.1:8080/" title="得力（deli） 9772 桌面文件柜/文件架/文件座 资料柜/收纳柜 黑色 办公用品">得力（deli） 9772 桌面文件柜/文件架/文件座 资料柜/收纳柜 黑色 办公用品</a></h4>
+                    <div class="prize">￥76.00</div>
+                </li>
+                
+                <li>
+                    <a href="http://127.0.0.1:8080/goods/6.html" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/00/wKgBmlu8HYGADZrLAACHGSuUkoo1827805"></a>
+                    <h4><a href="http://127.0.0.1:8080/goods/6.html" title="晨光（M&amp;G）3格回形针长尾夹工字钉套装1盒ASC99361">晨光（M&amp;G）3格回形针长尾夹工字钉套装1盒ASC99361</a></h4>
+                    <div class="prize">￥7.90</div>
+                </li>
+                
+                <li>
+                    <a href="http://127.0.0.1:8080/goods/5.html" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/00/wKgBmlu8GmaALTtCAAOPHsHcvfY1224976"></a>
+                    <h4><a href="http://127.0.0.1:8080/goods/5.html" title="广博(GuangBo)6卷装48mm*60y透明封箱胶带胶布办公用品FX-20">广博(GuangBo)6卷装48mm*60y透明封箱胶带胶布办公用品FX-20</a></h4>
+                    <div class="prize">￥28.00</div>
+                </li>
+                
+                <li>
+                    <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/01/CtM3BVrMgeuAYEocAABd3TzhhGw1571126"></a>
+                    <h4><a href="http://127.0.0.1:8080/" title="华为 nova3e 全网通 幻夜黑">华为 nova3e 全网通 幻夜黑</a></h4>
+                    <div class="prize">￥1999.00</div>
+                </li>
+                
+                <li>
+                    <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/01/CtM3BVrMgkaAWyHAAABbrVH9a7o5762009"></a>
+                    <h4><a href="http://127.0.0.1:8080/" title="OPPO R15 全网通 梦镜红">OPPO R15 全网通 梦镜红</a></h4>
+                    <div class="prize">￥3299.00</div>
+                </li>
+                
+                <li>
+                    <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/01/CtM3BVrMgmyAB_1AAABoaAzPPW86045138"></a>
+                    <h4><a href="http://127.0.0.1:8080/" title="荣耀V10 全网通 标配版 沙滩金">荣耀V10 全网通 标配版 沙滩金</a></h4>
+                    <div class="prize">￥2499.00</div>
+                </li>
+                
+                <li>
+                    <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/01/CtM3BVrMgo6Aa3OTAAA82h3PXzw9976088"></a>
+                    <h4><a href="http://127.0.0.1:8080/" title="vivo X21 异形全面屏 全网通">vivo X21 异形全面屏 全网通</a></h4>
+                    <div class="prize">￥3198.00</div>
+                </li>
+                
+            </ul>
+            <ul v-show="f1_tab===2" class="goods_list fl">
+                
+                <li>
+                    <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/01/CtM3BVrMg_qACjBsAAActVXQUoc6433633"></a>
+                    <h4><a href="http://127.0.0.1:8080/" title="华为P10 全网通">华为P10 全网通</a></h4>
+                    <div class="prize">￥3488.00</div>
+                </li>
+                
+                <li>
+                    <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/01/CtM3BVrMhBeAaZ9OAABuZHjPsV88472096"></a>
+                    <h4><a href="http://127.0.0.1:8080/" title="小米 红米5 全网通版">小米 红米5 全网通版</a></h4>
+                    <div class="prize">￥699.00</div>
+                </li>
+                
+                <li>
+                    <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/01/CtM3BVrMhDWAEwgEAABPce7je4w1228836"></a>
+                    <h4><a href="http://127.0.0.1:8080/" title="魅蓝 Note6 全网通公开版">魅蓝 Note6 全网通公开版</a></h4>
+                    <div class="prize">￥1499.00</div>
+                </li>
+                
+                <li>
+                    <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/01/CtM3BVrMhFuAB5eZAAAaQIF-UNs3707070"></a>
+                    <h4><a href="http://127.0.0.1:8080/" title="红米5Plus 全网通">红米5Plus 全网通</a></h4>
+                    <div class="prize">￥1299.00</div>
+                </li>
+                
+                <li>
+                    <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/01/CtM3BVrMhH6AAjD4AABS1vBu6x01229529"></a>
+                    <h4><a href="http://127.0.0.1:8080/" title="荣耀9青春版 标配版">荣耀9青春版 标配版</a></h4>
+                    <div class="prize">￥1099.00</div>
+                </li>
+                
+                <li>
+                    <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/01/CtM3BVrMhRCAB5hsAAAQZye4aIM5257140"></a>
+                    <h4><a href="http://127.0.0.1:8080/" title="华为 畅享8 全网通">华为 畅享8 全网通</a></h4>
+                    <div class="prize">￥1299.00</div>
+                </li>
+                
+                <li>
+                    <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/01/CtM3BVrMhVCAFC8tAABonSNLGHA3584281"></a>
+                    <h4><a href="http://127.0.0.1:8080/" title="荣耀 畅玩7X 尊享版">荣耀 畅玩7X 尊享版</a></h4>
+                    <div class="prize">￥1799.00</div>
+                </li>
+                
+                <li>
+                    <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/01/CtM3BVrMhW6Ac7QMAABd3TzhhGw0583536"></a>
+                    <h4><a href="http://127.0.0.1:8080/" title="华为 nova3e 全网通 幻夜黑">华为 nova3e 全网通 幻夜黑</a></h4>
+                    <div class="prize">￥1999.00</div>
+                </li>
+                
+                <li>
+                    <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/01/CtM3BVrMhYyAOjMVAABU1kCuf_48013827"></a>
+                    <h4><a href="http://127.0.0.1:8080/" title="魅族 RPO 7 Plus 全网通">魅族 RPO 7 Plus 全网通</a></h4>
+                    <div class="prize">￥2799.00</div>
+                </li>
+                
+                <li>
+                    <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/01/CtM3BVrMhaSAK3QLAAA7LKRGwzQ0348867"></a>
+                    <h4><a href="http://127.0.0.1:8080/" title="三星 S8 Plus 全网通">三星 S8 Plus 全网通</a></h4>
+                    <div class="prize">￥5499.00</div>
+                </li>
+                
+            </ul>
+            <ul v-show="f1_tab===3" class="goods_list fl">
+                
+                <li>
+                    <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/01/CtM3BVrMhjOAdMNbAAAR1JGA_cA5064317"></a>
+                    <h4><a href="http://127.0.0.1:8080/" title="Aogress一体双用数据线DC-28金">Aogress一体双用数据线DC-28金</a></h4>
+                    <div class="prize">￥29.00</div>
+                </li>
+                
+                <li>
+                    <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/01/CtM3BVrMhlSAP_27AAAW_YBdNEk8530912"></a>
+                    <h4><a href="http://127.0.0.1:8080/" title="黑客iPhone X 钢化膜">黑客iPhone X 钢化膜</a></h4>
+                    <div class="prize">￥29.00</div>
+                </li>
+                
+                <li>
+                    <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/01/CtM3BVrMhniADXZpAAALTWT-dfQ6160056"></a>
+                    <h4><a href="http://127.0.0.1:8080/" title="黑客 3D曲面 全屏钢化膜">黑客 3D曲面 全屏钢化膜</a></h4>
+                    <div class="prize">￥99.00</div>
+                </li>
+                
+                <li>
+                    <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/01/CtM3BVrMhpiAV3lJAABiLlkgy2Y9166507"></a>
+                    <h4><a href="http://127.0.0.1:8080/" title="三星（SAMSUNG）存储卡 64G">三星（SAMSUNG）存储卡 64G</a></h4>
+                    <div class="prize">￥169.00</div>
+                </li>
+                
+                <li>
+                    <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/01/CtM3BVrMhveAOh8EAAA1ykQ-kAU6900992"></a>
+                    <h4><a href="http://127.0.0.1:8080/" title="浦诺菲(pivoful) PUC-15 Type-C 数据线">浦诺菲(pivoful) PUC-15 Type-C 数据线</a></h4>
+                    <div class="prize">￥19.90</div>
+                </li>
+                
+                <li>
+                    <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/01/CtM3BVrMhyuAEf95AABFDj_owsg4241256"></a>
+                    <h4><a href="http://127.0.0.1:8080/" title="好格(Aogress) A-100E移动电源">好格(Aogress) A-100E移动电源</a></h4>
+                    <div class="prize">￥99.00</div>
+                </li>
+                
+                <li>
+                    <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/01/CtM3BVrMh0qAavITAABOVXYg3SI5232882"></a>
+                    <h4><a href="http://127.0.0.1:8080/" title="卡士奇 存储卡">卡士奇 存储卡</a></h4>
+                    <div class="prize">￥29.90</div>
+                </li>
+                
+                <li>
+                    <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/01/CtM3BVrMh4eAWdF2AAA-Fkkc5rM1921911"></a>
+                    <h4><a href="http://127.0.0.1:8080/" title="捷波朗(Jabra)OTE23 运动蓝牙耳机">捷波朗(Jabra)OTE23 运动蓝牙耳机</a></h4>
+                    <div class="prize">￥299.00</div>
+                </li>
+                
+                <li>
+                    <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/01/CtM3BVrMh62AUlDTAAA-SfqPszY5890026"></a>
+                    <h4><a href="http://127.0.0.1:8080/" title="besiterBST-0109FO强尼思">besiterBST-0109FO强尼思</a></h4>
+                    <div class="prize">￥99.00</div>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    <div class="list_model model02">
+            <div class="list_title clearfix">
+                <h3 class="fl" id="model01">2F 办公电器</h3>
+                <div class="subtitle fr">
+                    <a @mouseenter="f2_tab=1" :class="f2_tab===1?'active':''">大家电</a>
+                    <a @mouseenter="f2_tab=2" :class="f2_tab===2?'active':''">生活电器</a>
+                </div>
+            </div>
+            <div class="goods_con clearfix">
+                <div class="goods_banner fl">
+                    <img src="http://39.106.99.136:8888/group1/M00/00/01/wKgBmlvNh4qAVIBMAAB0mDn0XNc4101898">
+                    <div class="channel">
+                        
+                        <a href="http://127.0.0.1:8080/">电脑</a>
+                        
+                        <a href="http://127.0.0.1:8080/">数码</a>
+                        
+                        <a href="http://127.0.0.1:8080/">配件</a>
+                        
+                        <a href="http://127.0.0.1:8080/">潮电子</a>
+                        
+                    </div>
+                    <div class="key_words">
+                        
+                        <a href="http://127.0.0.1:8080/">iPad新品</a>
+                        
+                        <a href="http://127.0.0.1:8080/">限量购</a>
+                        
+                        <a href="http://127.0.0.1:8080/">单反相机</a>
+                        
+                        <a href="http://127.0.0.1:8080/">智能家具</a>
+                        
+                        <a href="http://127.0.0.1:8080/">智能路由</a>
+                        
+                        <a href="http://127.0.0.1:8080/">限时抢</a>
+                        
+                        <a href="http://127.0.0.1:8080/">颂拓</a>
+                        
+                        <a href="http://127.0.0.1:8080/">微单</a>
+                        
+                        <a href="http://127.0.0.1:8080/">耳机</a>
+                        
+                    </div>
+                </div>
+                <ul v-show="f2_tab===1" class="goods_list fl">
+                    
+                    <li>
+                        <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/01/CtM3BVrMisuAJnyWAABYJxXfN8w9822011"></a>
+                        <h4><a href="http://127.0.0.1:8080/" title="小米九号平衡车">小米九号平衡车</a></h4>
+                        <div class="prize">加100元送小米汽车</div>
+                    </li>
+                    
+                    <li>
+                        <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/01/CtM3BVrMivSAUTWcAAANpJ-t9xg5938130"></a>
+                        <h4><a href="http://127.0.0.1:8080/" title="小米空气净化器2">小米空气净化器2</a></h4>
+                        <div class="prize">加价10元送滤芯</div>
+                    </li>
+                    
+                    <li>
+                        <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/01/CtM3BVrNrY-AdBacAAA7DYB8sjU0120233"></a>
+                        <h4><a href="http://127.0.0.1:8080/" title="Apple Watch S3 GPS版">Apple Watch S3 GPS版</a></h4>
+                        <div class="prize">加1元换够蓝牙耳机</div>
+                    </li>
+                    
+                    <li>
+                        <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/01/CtM3BVrNrd2AbRH-AAALOATUqqM8030242"></a>
+                        <h4><a href="http://127.0.0.1:8080/" title="裴讯智能体脂秤S7P">裴讯智能体脂秤S7P</a></h4>
+                        <div class="prize">加1元换够南浮电池</div>
+                    </li>
+                    
+                    <li>
+                        <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/01/CtM3BVrNrf-AJ1ZjAAB_vAApFkw8201014"></a>
+                        <h4><a href="http://127.0.0.1:8080/" title="360儿童手表电话SE2">360儿童手表电话SE2</a></h4>
+                        <div class="prize">￥169.00</div>
+                    </li>
+                    
+                    <li>
+                        <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/01/CtM3BVrNrkOAYXcbAABQocGJtes4517631"></a>
+                        <h4><a href="http://127.0.0.1:8080/" title="S2PGHW-521蓝牙耳机">S2PGHW-521蓝牙耳机</a></h4>
+                        <div class="prize">￥449.00</div>
+                    </li>
+                    
+                    <li>
+                        <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/01/CtM3BVrNrmeAPQkiAAAKCg08y3w4028142"></a>
+                        <h4><a href="http://127.0.0.1:8080/" title="科大讯飞 翻译机">科大讯飞 翻译机</a></h4>
+                        <div class="prize">加1元换够电池</div>
+                    </li>
+                    
+                    <li>
+                        <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/01/CtM3BVrNroeAUxHkAAAKhSBwnSk3723835"></a>
+                        <h4><a href="http://127.0.0.1:8080/" title="Apple AirPods蓝牙耳机">Apple AirPods蓝牙耳机</a></h4>
+                        <div class="prize">￥1288.00</div>
+                    </li>
+                    
+                    <li>
+                        <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/01/CtM3BVrNrq-AbFajAABb8Hp05302964728"></a>
+                        <h4><a href="http://127.0.0.1:8080/" title="ILIFE V5 智能扫地机器人">ILIFE V5 智能扫地机器人</a></h4>
+                        <div class="prize">加1元换够充电器</div>
+                    </li>
+                    
+                    <li>
+                        <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/01/CtM3BVrNrs2AMHPbAABMxVYJeMo0602527"></a>
+                        <h4><a href="http://127.0.0.1:8080/" title="360记录仪M301">360记录仪M301</a></h4>
+                        <div class="prize">￥319.00</div>
+                    </li>
+                    
+                </ul>
+                <ul v-show="f2_tab===2" class="goods_list fl">
+                    
+                    <li>
+                        <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/01/CtM3BVrNr0iAAbCEAABZEWPGxc48830214"></a>
+                        <h4><a href="http://127.0.0.1:8080/" title="Apple iPad 平板电脑 2018款">Apple iPad 平板电脑 2018款</a></h4>
+                        <div class="prize">￥2388.00</div>
+                    </li>
+                    
+                    <li>
+                        <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/01/CtM3BVrNr2-AbNUxAABwpN-gR8E7784256"></a>
+                        <h4><a href="http://127.0.0.1:8080/" title="华硕飞行堡垒五代游戏本">华硕飞行堡垒五代游戏本</a></h4>
+                        <div class="prize">￥5999.00</div>
+                    </li>
+                    
+                    <li>
+                        <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/01/CtM3BVrNr6iAWKHsAAAcWfJ6OD00441704"></a>
+                        <h4><a href="http://127.0.0.1:8080/" title="ThinkPad T480">ThinkPad T480</a></h4>
+                        <div class="prize">￥8399.00</div>
+                    </li>
+                    
+                    <li>
+                        <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/01/CtM3BVrNr8KAD6b2AAByGLpNQV01684706"></a>
+                        <h4><a href="http://127.0.0.1:8080/" title="华硕飞行堡垒五代游戏本">华硕飞行堡垒五代游戏本</a></h4>
+                        <div class="prize">￥6299.00</div>
+                    </li>
+                    
+                    <li>
+                        <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/02/CtM3BVrhyhmAehqbAAA3XtuXCto1322736"></a>
+                        <h4><a href="http://127.0.0.1:8080/" title="艾比格特 无线移动WIFI">艾比格特 无线移动WIFI</a></h4>
+                        <div class="prize">￥1399.00</div>
+                    </li>
+                    
+                    <li>
+                        <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/01/CtM3BVrNsA2AQUMbAAAbb_vBV6I1599925"></a>
+                        <h4><a href="http://127.0.0.1:8080/" title="360 巴迪龙儿童手表">360 巴迪龙儿童手表</a></h4>
+                        <div class="prize">￥999.00</div>
+                    </li>
+                    
+                    <li>
+                        <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/01/CtM3BVrNsCuAUvllAAAOkY17G984349519"></a>
+                        <h4><a href="http://127.0.0.1:8080/" title="Lenovo 星球大战 绝地挑战 AR眼镜">Lenovo 星球大战 绝地挑战 AR眼镜</a></h4>
+                        <div class="prize">￥1999.00</div>
+                    </li>
+                    
+                    <li>
+                        <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/01/CtM3BVrNsEGAZTfyAAAasplERbc8856337"></a>
+                        <h4><a href="http://127.0.0.1:8080/" title="HTC VR眼镜">HTC VR眼镜</a></h4>
+                        <div class="prize">￥4299.00</div>
+                    </li>
+                    
+                    <li>
+                        <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/01/CtM3BVrNsGCAeDZeAABtIYY5-s41601603"></a>
+                        <h4><a href="http://127.0.0.1:8080/" title="Apple Watch S3 蜂窝版">Apple Watch S3 蜂窝版</a></h4>
+                        <div class="prize">￥3188.00</div>
+                    </li>
+                    
+                    <li>
+                        <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/01/CtM3BVrNsHyANXdyAABeDo_Qzeg1095047"></a>
+                        <h4><a href="http://127.0.0.1:8080/" title="360电话手表 X1Pro">360电话手表 X1Pro</a></h4>
+                        <div class="prize">￥1499.00</div>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+
+        <div class="list_model model03">
+            <div class="list_title clearfix">
+                <h3 class="fl" id="model01">3F 网络设备</h3>
+                <div class="subtitle fr">
+                    <a @mouseenter="f3_tab=1" :class="f3_tab===1?'active':''">外设产品</a>
+                    <a @mouseenter="f3_tab=2" :class="f3_tab===2?'active':''">电脑整机</a>
+                </div>
+            </div>
+            <div class="goods_con clearfix">
+                <div class="goods_banner fl">
+                    <img src="http://39.106.99.136:8888/group1/M00/00/01/wKgBmlvNh5-AF6YhAACCiKfJQ5M7449744">
+                    <div class="channel">
+                        
+                        <a href="http://127.0.0.1:8080/">家具日用</a>
+                        
+                        <a href="http://127.0.0.1:8080/">家纺寝具</a>
+                        
+                        <a href="http://127.0.0.1:8080/">住宅家具</a>
+                        
+                    </div>
+                    <div class="key_words">
+                        
+                        <a href="http://127.0.0.1:8080/">厨具餐饮</a>
+                        
+                        <a href="http://127.0.0.1:8080/">被子</a>
+                        
+                        <a href="http://127.0.0.1:8080/">实木床</a>
+                        
+                        <a href="http://127.0.0.1:8080/">箭牌马桶</a>
+                        
+                        <a href="http://127.0.0.1:8080/">指纹锁</a>
+                        
+                        <a href="http://127.0.0.1:8080/">电饭煲</a>
+                        
+                        <a href="http://127.0.0.1:8080/">热水器</a>
+                        
+                        <a href="http://127.0.0.1:8080/">席梦思</a>
+                        
+                        <a href="http://127.0.0.1:8080/">沙发</a>
+                        
+                    </div>
+                </div>
+                <ul v-show="f3_tab===1" class="goods_list fl">
+                    
+                    <li>
+                        <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/01/CtM3BVrNsuuAQo25AAAmP_AGNMA9808303"></a>
+                        <h4><a href="http://127.0.0.1:8080/" title="洁柔纸巾">洁柔纸巾</a></h4>
+                        <div class="prize">￥45.90</div>
+                    </li>
+                    
+                    <li>
+                        <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/01/CtM3BVrNsxaAeU4HAAAkQDJCGSY6809195"></a>
+                        <h4><a href="http://127.0.0.1:8080/" title="花仙子除湿剂">花仙子除湿剂</a></h4>
+                        <div class="prize">￥19.90</div>
+                    </li>
+                    
+                    <li>
+                        <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/01/CtM3BVrNszaAMu2PAACwnbap8zI9797082"></a>
+                        <h4><a href="http://127.0.0.1:8080/" title="超能洗衣液">超能洗衣液</a></h4>
+                        <div class="prize">惊喜价</div>
+                    </li>
+                    
+                    <li>
+                        <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/01/CtM3BVrNs2SAf2DEAAAGl2-3v5k2172012"></a>
+                        <h4><a href="http://127.0.0.1:8080/" title="创简坊 扫帚">创简坊 扫帚</a></h4>
+                        <div class="prize">惊喜价</div>
+                    </li>
+                    
+                    <li>
+                        <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/01/CtM3BVrNs4KAIlJKAAAQmKypd2c1901811"></a>
+                        <h4><a href="http://127.0.0.1:8080/" title="万象玻璃杯">万象玻璃杯</a></h4>
+                        <div class="prize">爆款热销</div>
+                    </li>
+                    
+                    <li>
+                        <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/01/CtM3BVrNs6aAea7bAAAIoddXpoA5854653"></a>
+                        <h4><a href="http://127.0.0.1:8080/" title="爱丽丝收纳箱">爱丽丝收纳箱</a></h4>
+                        <div class="prize">￥66.00</div>
+                    </li>
+                    
+                    <li>
+                        <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/01/CtM3BVrNs8WAZsplAAB-c4wo3kI9077289"></a>
+                        <h4><a href="http://127.0.0.1:8080/" title="塑料袋 加厚">塑料袋 加厚</a></h4>
+                        <div class="prize">跳楼价</div>
+                    </li>
+                    
+                    <li>
+                        <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/02/CtM3BVrNs-SAaLqBAAAPB44z-fw7327519"></a>
+                        <h4><a href="http://127.0.0.1:8080/" title="特白惠 塑料杯">特白惠 塑料杯</a></h4>
+                        <div class="prize">实惠价</div>
+                    </li>
+                    
+                    <li>
+                        <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/00/wKgBmlu672CAM0VcAAKzcljOzzQ8115410"></a>
+                        <h4><a href="http://127.0.0.1:8080/" title="Bormioli Rocco意大利进口水果杯">Bormioli Rocco意大利进口水果杯</a></h4>
+                        <div class="prize">买一送一</div>
+                    </li>
+                    
+                    <li>
+                        <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/02/CtM3BVrNtDGAdlzlAAAZZRjOIrQ5323041"></a>
+                        <h4><a href="http://127.0.0.1:8080/" title="宜兴紫砂壶">宜兴紫砂壶</a></h4>
+                        <div class="prize">￥220.00</div>
+                    </li>
+                    
+                </ul>
+                <ul v-show="f3_tab===2" class="goods_list fl">
+                    
+                    <li>
+                        <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/02/CtM3BVrNtMWANuqTAACac0TCaxU2674435"></a>
+                        <h4><a href="http://127.0.0.1:8080/" title="苏泊尔 炒锅">苏泊尔 炒锅</a></h4>
+                        <div class="prize">￥329.00 惠</div>
+                    </li>
+                    
+                    <li>
+                        <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/02/CtM3BVrNtOiAKex1AAAOZc14LLQ2319263"></a>
+                        <h4><a href="http://127.0.0.1:8080/" title="双立人 多用双刀">双立人 多用双刀</a></h4>
+                        <div class="prize">惊喜价</div>
+                    </li>
+                    
+                    <li>
+                        <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/02/CtM3BVrNtRGAGUbMAACY-WS_oQg9101415"></a>
+                        <h4><a href="http://127.0.0.1:8080/" title="爱仕达高压锅">爱仕达高压锅</a></h4>
+                        <div class="prize">特惠价</div>
+                    </li>
+                    
+                    <li>
+                        <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/02/CtM3BVrNtUGACPW-AAAWNwYc_Yg9317761"></a>
+                        <h4><a href="http://127.0.0.1:8080/" title="维艾圆形不秀钢盆">维艾圆形不秀钢盆</a></h4>
+                        <div class="prize">￥69.90</div>
+                    </li>
+                    
+                    <li>
+                        <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/02/CtM3BVrNtWKAUKPkAADhQEAcAgQ4155172"></a>
+                        <h4><a href="http://127.0.0.1:8080/" title="家栢利304不锈钢壁挂">家栢利304不锈钢壁挂</a></h4>
+                        <div class="prize">￥198.00</div>
+                    </li>
+                    
+                    <li>
+                        <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/02/CtM3BVrNtY2ABEOfAAAWaWuGKss3304555"></a>
+                        <h4><a href="http://127.0.0.1:8080/" title="生物海瓷">生物海瓷</a></h4>
+                        <div class="prize">震撼价</div>
+                    </li>
+                    
+                    <li>
+                        <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/02/CtM3BVrNtamAdrqPAAAYsg3AvQ86108884"></a>
+                        <h4><a href="http://127.0.0.1:8080/" title="实木筷">实木筷</a></h4>
+                        <div class="prize">买二送一</div>
+                    </li>
+                    
+                    <li>
+                        <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/02/CtM3BVrNtcOAYTH1AABVIz70wKU1556174"></a>
+                        <h4><a href="http://127.0.0.1:8080/" title="菜板">菜板</a></h4>
+                        <div class="prize">只要￥149.00</div>
+                    </li>
+                    
+                    <li>
+                        <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/02/CtM3BVrNteKAZhHCAAAMrIL-ugE2533088"></a>
+                        <h4><a href="http://127.0.0.1:8080/" title="刻度玻璃瓶">刻度玻璃瓶</a></h4>
+                        <div class="prize">白菜价</div>
+                    </li>
+                    
+                    <li>
+                        <a href="http://127.0.0.1:8080/" class="goods_pic"><img src="http://39.106.99.136:8888/group1/M00/00/02/CtM3BVrNtf-AY0FGAAAZwGscZq42512400"></a>
+                        <h4><a href="http://127.0.0.1:8080/" title="韩国进口 密封盒">韩国进口 密封盒</a></h4>
+                        <div class="prize">￥39.00</div>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+
+    <div class="footer">
+        <div class="foot_link">
+            <a href="#">关于我们</a>
+            <span>|</span>
+            <a href="#">联系我们</a>
+            <span>|</span>
+            <a href="#">招聘人才</a>
+            <span>|</span>
+            <a href="#">友情链接</a>
+        </div>
+       <p>CopyRight © 2018 北京行丰银拓有限公司 All Rights Reserved</p>
+		<p>电话：400-876-8760 &nbsp;&nbsp;&nbsp;&nbsp;   京ICP备案证书号：京ICP备11001851号</p>
+		<p>© 2005-2018 行丰银拓办公用品商城 版权所有，并保留所有权利。 北京市海淀区西草场1号802 Tel: 400-876-8760 E-mail: hfyt365@163.com</p>
+		<p>
+			<a href="http://wpa.qq.com/msgrd?V=1&amp;uin=3145517362&amp;Site=行丰银拓办公用品商城&amp;Menu=yes" target="_blank"><img src="http://wpa.qq.com/pa?p=1:3145517362:4" height="16" border="0" alt="QQ"> 3145517362</a>
+			<a href="http://amos1.taobao.com/msg.ww?v=2&amp;uid=%E8%A1%8C%E4%B8%B0%E9%93%B6%E6%8B%93&amp;s=2" target="_blank"><img src="http://amos1.taobao.com/online.ww?v=2&amp;uid=%E8%A1%8C%E4%B8%B0%E9%93%B6%E6%8B%93&amp;s=2" width="16" height="16" border="0" alt="淘宝旺旺">行丰银拓</a>
+		</p>
+    </div>
+    </div>
+    <script type="text/javascript" src="/js/index.js"></script>
+
+    <script type='text/javascript' src="/js/cellphone_num.js"></script>
+</body>
+</html>
